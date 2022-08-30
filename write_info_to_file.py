@@ -2,13 +2,15 @@
 Importing the datetime module from the datetime library
 Importing the requests and datetime modules.
 """
+
 from datetime import datetime
 import requests
 
 
 def create_new_file():
     """
-    It creates a new file in the directory C:/Users/cc/temp/ and gives it a name that the user inputs.
+    It creates a new file in the directory C:/Users/cc/temp/
+    this gives it a name that the user inputs.
     :return: The name of the file.
     """
     print("This program will help you create a new file and store today's date in it.")
@@ -26,9 +28,9 @@ def write_date_to_file():
     """
     This function writes the current date to a file
     """
-    with open(f"{my_local_file}", "w", encoding="utf-8") as f:
+    with open(f"{my_local_file}", "w", encoding="utf-8") as write_file:
         date = datetime.today().strftime("%Y-%m-%d")
-        f.write(f"Today's date is: {date} \n")
+        write_file.write(f"Today's date is: {date} \n")
 
 
 def get_weather_report():
@@ -57,13 +59,13 @@ def get_weather_report():
         pressure = main['pressure']
         # weather report
         report = data['weather']
-        with open(f"{my_local_file}", "a", encoding="utf-8") as f:
-            f.write("\n")
-            f.write(f"{city:-^30} \n")
-            f.write(f"The temperature is: {temperature}k \n")
-            f.write(f"The humidity is: {humidity} \n")
-            f.write(f"The pressure is: {pressure} \n")
-            f.write(f"The weather report is: {report[0]['description']} \n")
+        with open(f"{my_local_file}", "a", encoding="utf-8") as write_file:
+            write_file.write("\n")
+            write_file.write(f"{city:-^30} \n")
+            write_file.write(f"The temperature is: {temperature}k \n")
+            write_file.write(f"The humidity is: {humidity} \n")
+            write_file.write(f"The pressure is: {pressure} \n")
+            write_file.write(f"The weather report is: {report[0]['description']} \n")
     else:
         # showing the error message
         print("Error in the HTTP request")
@@ -72,8 +74,8 @@ def read_file():
     """
     It opens the file, reads it, and prints it.
     """
-    with open(f"{my_local_file}", "r", encoding="utf-8") as f:
-        print(f.read())
+    with open(f"{my_local_file}", "r", encoding="utf-8") as write_file:
+        print(write_file.read())
 
 
 my_local_file = create_new_file()
